@@ -1,8 +1,8 @@
 # See https://github.com/aikar/commands/wiki/Locales
 commands:
   descriptions:
-    info: 'Prints out the players name and play time.'
-  info: 'Your name is: {player}. Playtime: {play_time}.'
+    info: 'Shows your actual life count.'
+  info: 'You have {lifes} lifes.'
 
 kick:
   message: 'You cannot join! You do not have enough lifes!'

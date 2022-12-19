@@ -2,7 +2,6 @@ package org.matrixnetwork.matrixlifesystem;
 
 import co.aikar.commands.PaperCommandManager;
 import co.aikar.locales.MessageKey;
-import co.aikar.locales.MessageKeyProvider;
 import kr.entree.spigradle.annotations.PluginMain;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -10,11 +9,7 @@ import lombok.Setter;
 import lombok.experimental.Accessors;
 import net.kyori.adventure.text.Component;
 import net.milkbowl.vault.economy.Economy;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.matrixnetwork.matrixlifesystem.commands.TemplatesCommands;
-import org.matrixnetwork.matrixlifesystem.database.SessionFactoryMaker;
+import org.matrixnetwork.matrixlifesystem.commands.LifeSystemCommands;
 import org.matrixnetwork.matrixlifesystem.entity.PlayerData;
 import org.matrixnetwork.matrixlifesystem.vault.VaultProvider;
 import org.bukkit.Bukkit;
@@ -95,7 +90,7 @@ public class MatrixLifeSystem extends JavaPlugin implements Listener {
 
         loadCommandLocales(commandManager);
 
-        commandManager.registerCommand(new TemplatesCommands());
+        commandManager.registerCommand(new LifeSystemCommands());
     }
 
     // see https://github.com/aikar/commands/wiki/Locales

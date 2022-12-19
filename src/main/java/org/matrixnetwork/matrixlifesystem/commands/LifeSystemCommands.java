@@ -5,15 +5,14 @@ import co.aikar.commands.CommandHelp;
 import co.aikar.commands.MessageType;
 import co.aikar.commands.annotation.*;
 import co.aikar.locales.MessageKey;
-import org.bukkit.Statistic;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.matrixnetwork.matrixlifesystem.entity.PlayerData;
 
 import static org.matrixnetwork.matrixlifesystem.Constants.ACF_BASE_KEY;
-import static org.matrixnetwork.matrixlifesystem.Constants.INFO_CMD_PERMISSION;
 
-@CommandAlias("stemplate")
-public class TemplatesCommands extends BaseCommand {
+@CommandAlias("lifesystem")
+public class LifeSystemCommands extends BaseCommand {
 
     // see https://github.com/aikar/commands/wiki/Locales
     static MessageKey key(String key) {
@@ -30,12 +29,10 @@ public class TemplatesCommands extends BaseCommand {
     @Subcommand("info|i")
     @CommandAlias("info")
     @Description("{@@commands.descriptions.info}")
-    @CommandCompletion("@players")
-    @CommandPermission(INFO_CMD_PERMISSION)
     public void info(@Flags("self") Player player) {
         success("info",
-                "{player}", player.getName(),
-                "{play_time}", player.getStatistic(Statistic.PLAY_ONE_MINUTE) + " Minutes"
+                "{lifes}", String.valueOf(PlayerData.getPlayerData(player
+                        .getUniqueId().toString()).getLifes())
         );
     }
 

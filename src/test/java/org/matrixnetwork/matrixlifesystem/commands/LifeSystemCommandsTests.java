@@ -6,10 +6,11 @@ import org.bukkit.Statistic;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.matrixnetwork.matrixlifesystem.TestBase;
+import org.matrixnetwork.matrixlifesystem.entity.PlayerData;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TemplateCommandsTests extends TestBase {
+public class LifeSystemCommandsTests extends TestBase {
 
     private PlayerMock player;
 
@@ -19,14 +20,13 @@ public class TemplateCommandsTests extends TestBase {
         super.setUp();
 
         player = server.addPlayer();
-        player.addAttachment(plugin, Constants.INFO_CMD_PERMISSION, true);
     }
 
     @Test
     void info_forSelf_printsOwnPlayerName() {
-        player.performCommand("stemplate info");
+        player.performCommand("lifesystem info");
 
-        int minutesPlayed = player.getStatistic(Statistic.PLAY_ONE_MINUTE);
-        assertThat(player.nextMessage()).contains("Your name is: Player0. Playtime: " + minutesPlayed);
+        int lifes = PlayerData.getPlayerData(player.getUniqueId().toString()).getLifes();
+        assertThat(player.nextMessage()).contains(lifes + " lifes");
     }
 }
