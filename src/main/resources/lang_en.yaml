@@ -2,7 +2,11 @@
 commands:
   descriptions:
     info: 'Shows your actual life count.'
-  info: 'You have {lifes} lifes.'
+    advance: 'Buy a new life.'
+  info: 'You have {lives} lives.'
+  advance:
+    success: 'Nice! You have {lives} lives.'
+    ne-money: 'Sorry! You do not have {cost} \$.'
 
 kick:
-  message: 'You cannot join! You do not have enough lifes!'
+  message: 'You cannot join! You do not have enough lives!'

@@ -22,11 +22,11 @@ public class PlayerData {
     private String uuid;
 
     @Getter
-    private int lifes;
+    private int lives;
 
-    public PlayerData(String uuid, int lifes) {
+    public PlayerData(String uuid, int lives) {
         this.uuid = uuid;
-        this.lifes = lifes;
+        this.lives = lives;
     }
 
     public PlayerData() {
@@ -46,19 +46,33 @@ public class PlayerData {
                 session.merge(pd);
                 tx.commit();
             }
-        } catch (Exception ignored) {
-            ignored.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
             pd = null;
         }
 
         return pd;
     }
 
+    public static void advance(PlayerData playerData) {
+        SessionFactory sessionFactory = SessionFactoryMaker.getFactory();
+
+        try (Session session = sessionFactory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            playerData.addLife();
+            session.merge(playerData);
+            tx.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void addLife() {
-        this.lifes++;
+        this.lives++;
     }
 
     public void removeLife() {
-        this.lifes--;
+        this.lives--;
     }
 }

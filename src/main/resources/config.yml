@@ -1,1 +1,5 @@
-min-lifes: 1
+# Minimum amount of lives to be able to join server
+min-lives: 1
+
+# Cost for a new life
+advance-cost: 200

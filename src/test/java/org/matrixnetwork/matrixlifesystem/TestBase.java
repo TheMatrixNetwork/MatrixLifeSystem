@@ -3,7 +3,6 @@ package org.matrixnetwork.matrixlifesystem;
 import be.seeseemelk.mockbukkit.MockBukkit;
 import be.seeseemelk.mockbukkit.ServerMock;
 import net.milkbowl.vault.economy.Economy;
-import org.matrixnetwork.matrixlifesystem.vault.VaultProvider;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -24,7 +23,7 @@ public abstract class TestBase {
 
     private void mockVaultEconomy() {
         economy = mock(Economy.class);
-        plugin.setVault(new VaultProvider(economy));
+        plugin.setEcon(economy);
     }
 
     @AfterEach

@@ -51,13 +51,13 @@ public class TemplatePluginTests extends TestBase {
     }
 
 
-    public static PlayerData addPlayerdData(String uuid, int lifes) {
+    public static PlayerData addPlayerdData(String uuid, int lives) {
         PlayerData pd;
 
         SessionFactory sessionFactory = SessionFactoryMaker.getFactory();
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
-            pd = new PlayerData(uuid, lifes);
+            pd = new PlayerData(uuid, lives);
             session.merge(pd);
             tx.commit();
         } catch (Exception ignored) {
