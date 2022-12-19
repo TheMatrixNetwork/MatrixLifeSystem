@@ -1,13 +1,21 @@
 package org.matrixnetwork.matrixlifesystem;
 
 import co.aikar.commands.PaperCommandManager;
+import co.aikar.locales.MessageKey;
+import co.aikar.locales.MessageKeyProvider;
 import kr.entree.spigradle.annotations.PluginMain;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import net.kyori.adventure.text.Component;
 import net.milkbowl.vault.economy.Economy;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.matrixnetwork.matrixlifesystem.commands.TemplatesCommands;
+import org.matrixnetwork.matrixlifesystem.database.SessionFactoryMaker;
+import org.matrixnetwork.matrixlifesystem.entity.PlayerData;
 import org.matrixnetwork.matrixlifesystem.vault.VaultProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -56,7 +64,21 @@ public class MatrixLifeSystem extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        getLogger().info("Player joined.");
+        PlayerData pd = PlayerData.getPlayerData(event.getPlayer().getUniqueId().toString());
+
+        if(pd == null) {
+            event.getPlayer().kick(Component.text("Life System not working!"));
+            return;
+        }
+
+        if (pd.getLifes() < this.getConfig().getInt("min-lifes")) {
+            event.getPlayer()
+                    .kick(Component.text(commandManager
+                            .getLocales()
+                            .getMessage(null, MessageKey.of("kick.message")
+                            )));
+        }
+
     }
 
     private void setupVaultIntegration() {
