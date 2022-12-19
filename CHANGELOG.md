@@ -1,3 +1,18 @@
+# 1.0.0 (2022-12-19)
+
+
+### Bug Fixes
+
+* added mariadb service to gh actions ([0d43747](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/0d437475f749bff914f55ac77153b1907cfd5f6b))
+* port mapping for mariadb service ([008ddfa](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/008ddface0ffb99e9f4602a7b245e51efcc0ed3f))
+
+
+### Features
+
+* added advance command ([e1998b6](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/e1998b6ab377f9ff056fd49780b9e59eaaae8fa2))
+* added basic lifesystem commands ([ab64e4a](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/ab64e4a50241a21521c7d44700d821b374840443))
+* added basic logic and database entites ([44df45e](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/44df45e66bfbcc7ebdb3dbc7af454bcd6e89c7ed))
+
 ## [4.5.3](https://github.com/sVoxelDev/spigot-plugin-template/compare/v4.5.2...v4.5.3) (2022-07-27)
 
 
