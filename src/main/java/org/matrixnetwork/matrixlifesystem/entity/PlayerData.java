@@ -34,7 +34,7 @@ public class PlayerData {
 
     public static PlayerData getPlayerData(String uuid) {
         PlayerData pd;
-        SessionFactory sessionFactory = SessionFactoryMaker.getFactory();
+        SessionFactory sessionFactory = SessionFactoryMaker.getInstance().getFactory();
 
         try (Session session = sessionFactory.openSession()) {
             pd = session.createNamedQuery("PlayerData.findByUUID", PlayerData.class)
@@ -55,7 +55,7 @@ public class PlayerData {
     }
 
     public static void advance(PlayerData playerData) {
-        SessionFactory sessionFactory = SessionFactoryMaker.getFactory();
+        SessionFactory sessionFactory = SessionFactoryMaker.getInstance().getFactory();
 
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();

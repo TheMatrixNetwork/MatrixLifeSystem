@@ -1,6 +1,7 @@
 buildscript {
     repositories {
-        mavenCentral()
+        maven { url = "https://repo.aikar.co/content/groups/aikar/" }
+        maven { url = "https://hub.spigotmc.org/nexus/content/groups/public/" }
     }
 }
 
@@ -58,6 +59,11 @@ repositories {
     maven { url = 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
+configurations {
+    provided
+    compile.extendsFrom provided
+}
+
 dependencies {
     // using spigot-api
     //implementation spigot(mcVersion)
@@ -68,6 +74,7 @@ dependencies {
     // Here are some opinionated dependencies that might help you with your plugin development:
 
     // Annotation Command Framework: https://github.com/aikar/commands
+    shadow "co.aikar:acf-paper:0.5.0-SNAPSHOT"
     implementation "co.aikar:acf-paper:0.5.0-SNAPSHOT"
     // Vault (https://github.com/MilkBowl/VaultAPI) for economy, permissions and chat API
     implementation "com.github.MilkBowl:VaultAPI:1.7.1"
@@ -79,6 +86,7 @@ dependencies {
     testImplementation 'org.assertj:assertj-core:3.21.0'
 
     // Database
+    shadow 'org.hibernate:hibernate-core:6.1.6.Final'
     implementation 'org.hibernate:hibernate-core:6.1.6.Final'
     implementation 'mysql:mysql-connector-java:8.0.31'
 
@@ -87,10 +95,8 @@ dependencies {
 }
 
 shadowJar {
-    classifier = ''
-    dependencies {
-        include(dependency('co.aikar:acf-paper:0.5.0-SNAPSHOT'))
-    }
+    archiveClassifier.set("")
+    configurations = [project.configurations.shadow] // **
     relocate 'co.aikar.commands', "${packageName}.acf"
     relocate 'co.aikar.locales', "${packageName}.locales"
 }
