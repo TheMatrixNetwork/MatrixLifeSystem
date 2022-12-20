@@ -5,8 +5,11 @@ import co.aikar.commands.CommandHelp;
 import co.aikar.commands.MessageType;
 import co.aikar.commands.annotation.*;
 import co.aikar.locales.MessageKey;
+import net.kyori.adventure.text.Component;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.matrixnetwork.matrixlifesystem.Constants;
 import org.matrixnetwork.matrixlifesystem.MatrixLifeSystem;
 import org.matrixnetwork.matrixlifesystem.entity.PlayerData;
 
@@ -41,7 +44,7 @@ public class LifeSystemCommands extends BaseCommand {
     @Subcommand("advance|a")
     @CommandAlias("advance")
     @Description("{@@commands.descriptions.info}")
-    public void advance(@Flags("self") Player player) {
+    public void advance(@Flags("self") Player player, String[] args) {
         if(plugin.getEcon().getBalance(player) > getAdvanceCosts()) {
             plugin.getEcon().withdrawPlayer(player, getAdvanceCosts());
 
@@ -57,6 +60,34 @@ public class LifeSystemCommands extends BaseCommand {
                     "{cost}", String.valueOf(getAdvanceCosts())
             );
         }
+    }
+
+    @Subcommand("advanceplayer|ap")
+    @CommandAlias("advanceplayer")
+    @CommandPermission(Constants.ACF_ADMIN_PERMISSION)
+    @Description("{@@commands.descriptions.info}")
+    @Syntax("[player]")
+    public void advancePlayer(String[] args) {
+        if(args.length != 1) {
+            error("advanceplayer.syntax",
+                    "{cost}", String.valueOf(getAdvanceCosts())
+            );
+            return;
+        }
+            OfflinePlayer player = plugin.getServer().getOfflinePlayer(args[0]);
+
+            PlayerData.advance(PlayerData.getPlayerData(player.getUniqueId().toString()));
+
+            if(player.isOnline()) {
+                ((Player)player).sendMessage(Component.text(plugin.getCommandManager()
+                        .getLocales()
+                        .getMessage(null, key("advanceplayer.receive"))
+                        ));
+            }
+
+            success("advanceplayer.success",
+                    "{player}", args[0]
+            );
     }
 
     private double getAdvanceCosts() {

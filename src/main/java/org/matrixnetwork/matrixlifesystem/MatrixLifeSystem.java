@@ -31,6 +31,7 @@ public class MatrixLifeSystem extends JavaPlugin implements Listener {
     @Getter
     @Accessors(fluent = true)
     private static MatrixLifeSystem instance;
+    @Getter
     private PaperCommandManager commandManager;
     @Getter
     @Setter(AccessLevel.PACKAGE)

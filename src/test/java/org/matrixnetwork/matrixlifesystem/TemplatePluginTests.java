@@ -49,21 +49,4 @@ public class TemplatePluginTests extends TestBase {
         server.addPlayer(player);
         assert server.getOnlinePlayers().contains(player);
     }
-
-
-    public static PlayerData addPlayerdData(String uuid, int lives) {
-        PlayerData pd;
-
-        SessionFactory sessionFactory = SessionFactoryMaker.getFactory();
-        try (Session session = sessionFactory.openSession()) {
-            Transaction tx = session.beginTransaction();
-            pd = new PlayerData(uuid, lives);
-            session.merge(pd);
-            tx.commit();
-        } catch (Exception ignored) {
-            pd = null;
-        }
-
-        return pd;
-    }
 }

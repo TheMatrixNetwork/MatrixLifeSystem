@@ -3,10 +3,15 @@ commands:
   descriptions:
     info: 'Shows your actual life count.'
     advance: 'Buy a new life.'
+    advanceplayer: 'Advance a player'
   info: 'You have {lives} lives.'
   advance:
     success: 'Nice! You have {lives} lives.'
     ne-money: 'Sorry! You do not have {cost} \$.'
+  advanceplayer:
+    success: 'Done! {player} has been given 1 life.'
+    receive: 'You got 1 extra life!'
+    syntax: 'Syntax error!'
 
 kick:
   message: 'You cannot join! You do not have enough lives!'
