@@ -49,4 +49,12 @@ public class TemplatePluginTests extends TestBase {
         server.addPlayer(player);
         assert server.getOnlinePlayers().contains(player);
     }
+
+    @Test
+    public void testWithPermissions() {
+        PlayerMock player = new PlayerMock(server, "TestPlayer", UUID.randomUUID());
+        player.addAttachment(plugin, Constants.ACF_ADMIN_PERMISSION, true);
+        server.addPlayer(player);
+        assert server.getOnlinePlayers().contains(player);
+    }
 }

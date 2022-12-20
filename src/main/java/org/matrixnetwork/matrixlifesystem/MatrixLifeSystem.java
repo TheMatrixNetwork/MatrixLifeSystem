@@ -59,6 +59,10 @@ public class MatrixLifeSystem extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
+        if(event.getPlayer().hasPermission(Constants.ACF_ADMIN_PERMISSION)) {
+            return;
+        }
+
         PlayerData pd = PlayerData.getPlayerData(event.getPlayer().getUniqueId().toString());
 
         if(pd == null) {
