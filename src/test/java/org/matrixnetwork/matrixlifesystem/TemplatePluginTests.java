@@ -54,7 +54,7 @@ public class TemplatePluginTests extends TestBase {
     public static PlayerData addPlayerdData(String uuid, int lives) {
         PlayerData pd;
 
-        SessionFactory sessionFactory = SessionFactoryMaker.getFactory();
+        SessionFactory sessionFactory = SessionFactoryMaker.getInstance().getFactory();
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             pd = new PlayerData(uuid, lives);

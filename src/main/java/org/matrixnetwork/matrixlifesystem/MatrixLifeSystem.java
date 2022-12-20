@@ -24,7 +24,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.logging.Logger;
 
 @PluginMain
 public class MatrixLifeSystem extends JavaPlugin implements Listener {
@@ -97,9 +96,9 @@ public class MatrixLifeSystem extends JavaPlugin implements Listener {
     // see https://github.com/aikar/commands/wiki/Locales
     private void loadCommandLocales(PaperCommandManager commandManager) {
         try {
-            saveResource("lang_en.yaml", true);
+            saveResource("lang-en.yaml", true);
             commandManager.getLocales().setDefaultLocale(Locale.ENGLISH);
-            commandManager.getLocales().loadYamlLanguageFile("lang_en.yaml", Locale.ENGLISH);
+            commandManager.getLocales().loadYamlLanguageFile("lang-en.yaml", Locale.ENGLISH);
             // this will detect the client locale and use it where possible
             commandManager.usePerIssuerLocale(true);
         } catch (IOException | InvalidConfigurationException e) {
