@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/TheMatrixNetwork/MatrixLifeSystem/compare/v1.0.0...v1.0.1) (2022-12-20)
+
+
+### Bug Fixes
+
+* package hibernate into jar ([5c711b0](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/5c711b0b8a6f9bf10d81c859ea743f4703e5e718))
+
 # 1.0.0 (2022-12-19)
 
 
