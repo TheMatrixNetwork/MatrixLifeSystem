@@ -26,7 +26,7 @@ public abstract class TestBase {
         mockVaultEconomy();
     }
 
-    private void mockVaultEconomy() {
+    protected void mockVaultEconomy() {
         economy = mock(Economy.class);
         plugin.setEcon(economy);
     }

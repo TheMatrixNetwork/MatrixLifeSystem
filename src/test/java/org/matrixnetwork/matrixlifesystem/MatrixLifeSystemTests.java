@@ -2,20 +2,11 @@ package org.matrixnetwork.matrixlifesystem;
 
 import be.seeseemelk.mockbukkit.entity.PlayerMock;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerKickEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.junit.jupiter.api.Test;
-import org.matrixnetwork.matrixlifesystem.database.SessionFactoryMaker;
-import org.matrixnetwork.matrixlifesystem.entity.PlayerData;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
 import java.util.UUID;
 
-public class TemplatePluginTests extends TestBase {
+public class MatrixLifeSystemTests extends TestBase {
 
     @Test
     public void testEnoughLifes() {

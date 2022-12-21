@@ -3,3 +3,6 @@ min-lives: 1
 
 # Cost for a new life
 advance-cost: 200
+
+lose-life-methods:
+  - DEATH

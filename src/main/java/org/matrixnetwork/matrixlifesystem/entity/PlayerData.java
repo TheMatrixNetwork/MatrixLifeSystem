@@ -68,6 +68,20 @@ public class PlayerData {
         }
     }
 
+    public static void removeLife(PlayerData playerData) {
+        SessionFactory sessionFactory = SessionFactoryMaker.getFactory();
+
+        try (Session session = sessionFactory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            playerData.removeLife();
+            session.merge(playerData);
+            tx.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void addLife() {
         this.lives++;
     }

@@ -45,7 +45,7 @@ public class LifeSystemCommands extends BaseCommand {
     @CommandAlias("advance")
     @Description("{@@commands.descriptions.info}")
     public void advance(@Flags("self") Player player, String[] args) {
-        if(plugin.getEcon().getBalance(player) > getAdvanceCosts()) {
+        if (plugin.getEcon().getBalance(player) > getAdvanceCosts()) {
             plugin.getEcon().withdrawPlayer(player, getAdvanceCosts());
 
             PlayerData.advance(PlayerData.getPlayerData(player.getUniqueId().toString()));
@@ -54,8 +54,7 @@ public class LifeSystemCommands extends BaseCommand {
                     "{lives}", String.valueOf(PlayerData.getPlayerData(player
                             .getUniqueId().toString()).getLives())
             );
-        }
-        else {
+        } else {
             error("advance.ne-money",
                     "{cost}", String.valueOf(getAdvanceCosts())
             );
@@ -68,26 +67,27 @@ public class LifeSystemCommands extends BaseCommand {
     @Description("{@@commands.descriptions.info}")
     @Syntax("[player]")
     public void advancePlayer(String[] args) {
-        if(args.length != 1) {
+        if (args.length != 1) {
             error("advanceplayer.syntax",
                     "{cost}", String.valueOf(getAdvanceCosts())
             );
             return;
         }
-            OfflinePlayer player = plugin.getServer().getOfflinePlayer(args[0]);
 
-            PlayerData.advance(PlayerData.getPlayerData(player.getUniqueId().toString()));
+        OfflinePlayer player = plugin.getServer().getOfflinePlayer(args[0]);
 
-            if(player.isOnline()) {
-                ((Player)player).sendMessage(Component.text(plugin.getCommandManager()
-                        .getLocales()
-                        .getMessage(null, key("advanceplayer.receive"))
-                        ));
-            }
+        PlayerData.advance(PlayerData.getPlayerData(player.getUniqueId().toString()));
 
-            success("advanceplayer.success",
-                    "{player}", args[0]
-            );
+        if (player.isOnline()) {
+            ((Player) player).sendMessage(Component.text(plugin.getCommandManager()
+                    .getLocales()
+                    .getMessage(null, key("advanceplayer.receive"))
+            ));
+        }
+
+        success("advanceplayer.success",
+                "{player}", args[0]
+        );
     }
 
     private double getAdvanceCosts() {
