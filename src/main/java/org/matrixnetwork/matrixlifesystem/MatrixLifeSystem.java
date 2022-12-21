@@ -19,9 +19,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.java.JavaPluginLoader;
 import org.matrixnetwork.matrixlifesystem.commands.LifeSystemCommands;
 import org.matrixnetwork.matrixlifesystem.entity.PlayerData;
+import org.matrixnetwork.matrixlifesystem.enums.LoseLifeMethod;
+import org.matrixnetwork.matrixlifesystem.listener.LoseLifeDeathListener;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -31,10 +34,13 @@ public class MatrixLifeSystem extends JavaPlugin implements Listener {
     @Getter
     @Accessors(fluent = true)
     private static MatrixLifeSystem instance;
+    @Getter
     private PaperCommandManager commandManager;
     @Getter
     @Setter(AccessLevel.PACKAGE)
     private Economy econ;
+    @Getter
+    private int minLifes;
 
     public MatrixLifeSystem() {
         instance = this;
@@ -49,15 +55,38 @@ public class MatrixLifeSystem extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         saveDefaultConfig();
+        loadConfig();
 
         setupVaultIntegration();
         setupCommands();
 
+        loadLoseLifeMethods();
+
         getServer().getPluginManager().registerEvents(this, this);
+    }
+
+    private void loadConfig() {
+        this.minLifes = this.getConfig().getInt("min-lives");
+    }
+
+    private void loadLoseLifeMethods() {
+        List<LoseLifeMethod> enabledMethods = getConfig()
+                .getStringList("lose-life-methods")
+                .stream()
+                .map(LoseLifeMethod::valueOf)
+                .toList();
+
+        if(enabledMethods.contains(LoseLifeMethod.DEATH)) {
+            getServer().getPluginManager().registerEvents(new LoseLifeDeathListener(), this);
+        }
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
+        if(event.getPlayer().hasPermission(Constants.ACF_ADMIN_PERMISSION)) {
+            return;
+        }
+
         PlayerData pd = PlayerData.getPlayerData(event.getPlayer().getUniqueId().toString());
 
         if(pd == null) {
@@ -65,7 +94,7 @@ public class MatrixLifeSystem extends JavaPlugin implements Listener {
             return;
         }
 
-        if (pd.getLives() < this.getConfig().getInt("min-lives")) {
+        if (pd.getLives() < minLifes) {
             event.getPlayer()
                     .kick(Component.text(commandManager
                             .getLocales()
