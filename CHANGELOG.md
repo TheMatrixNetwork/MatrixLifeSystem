@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/TheMatrixNetwork/MatrixLifeSystem/compare/v1.0.1...v1.1.0) (2022-12-21)
+
+
+### Features
+
+* add advanceplayer command ([71764a7](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/71764a76293207501c9bc5e239baabb89f7ae934))
+* add configurable option to remove a life per player death ([0c761cb](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/0c761cbdcbc565abcef86732180fc19f75717ba1))
+* people with permissions can join any server ([9854d7f](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/9854d7fcb3bb7d80553aeb299ba229dc5ca7fe71))
+
 ## [1.0.1](https://github.com/TheMatrixNetwork/MatrixLifeSystem/compare/v1.0.0...v1.0.1) (2022-12-20)
 
 
