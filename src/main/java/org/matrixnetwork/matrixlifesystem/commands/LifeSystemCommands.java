@@ -44,7 +44,7 @@ public class LifeSystemCommands extends BaseCommand {
     @Subcommand("advance|a")
     @CommandAlias("advance")
     @Description("{@@commands.descriptions.info}")
-    public void advance(@Flags("self") Player player, String[] args) {
+    public void advance(@Flags("self") Player player) {
         if (plugin.getEcon().getBalance(player) > getAdvanceCosts()) {
             plugin.getEcon().withdrawPlayer(player, getAdvanceCosts());
 
