@@ -15,7 +15,7 @@ import org.matrixnetwork.matrixlifesystem.entity.PlayerData;
 
 import static org.matrixnetwork.matrixlifesystem.Constants.ACF_BASE_KEY;
 
-@CommandAlias("livesystem")
+@CommandAlias("lifesystem")
 public class LifeSystemCommands extends BaseCommand {
     private final MatrixLifeSystem plugin = MatrixLifeSystem.instance();
 

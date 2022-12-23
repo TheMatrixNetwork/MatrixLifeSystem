@@ -127,3 +127,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_URL: "https://api.github.com/"
         run: npx --legacy-peer-deps -p @semantic-release/changelog -p @semantic-release/git -p @semantic-release/exec -p gradle-semantic-release-plugin -p semantic-release semantic-release
+
+  deploy:
+    needs: release
+    runs-on: ubuntu-18.04
+    # We want to run on external PRs, but not on our own internal PRs as they'll be run
+    # by the push to the branch.
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+
+
+    steps:

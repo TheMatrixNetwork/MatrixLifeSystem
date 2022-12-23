@@ -27,7 +27,7 @@ public class LifeSystemCommandsTests extends TestBase {
 
     @Test
     void test_default() {
-        player.performCommand("livesystem info");
+        player.performCommand("lifesystem info");
 
         int lives = PlayerData.getPlayerData(player.getUniqueId().toString()).getLives();
         assertThat(player.nextMessage()).contains(lives + " lives");
@@ -38,12 +38,12 @@ public class LifeSystemCommandsTests extends TestBase {
         when(economy.getBalance(player)).thenReturn(400D);
         int lives = PlayerData.getPlayerData(player.getUniqueId().toString()).getLives();
 
-        player.performCommand("livesystem advance");
+        player.performCommand("lifesystem advance");
         lives++;
 
         assertThat(player.nextMessage()).contains(lives + " lives");
 
-        player.performCommand("livesystem info");
+        player.performCommand("lifesystem info");
         assertThat(player.nextMessage()).contains("You have " + lives + " lives.");
     }
 
@@ -51,7 +51,7 @@ public class LifeSystemCommandsTests extends TestBase {
     void test_buy_life_no_money() {
         when(economy.getBalance(player)).thenReturn(100D);
 
-        player.performCommand("livesystem advance");
+        player.performCommand("lifesystem advance");
 
         assertThat(player.nextMessage()).contains("Sorry! You do not have " +
                 "" + MatrixLifeSystem.instance().getConfig().getDouble("advance-cost") + " $.");
@@ -60,7 +60,7 @@ public class LifeSystemCommandsTests extends TestBase {
     @Test
     void test_advanceplayer() {
         int lvl = PlayerData.getPlayerData(player.getUniqueId().toString()).getLives();
-        server.dispatchCommand(server.getConsoleSender(), "livesystem advanceplayer " + player.getName());
+        server.dispatchCommand(server.getConsoleSender(), "lifesystem advanceplayer " + player.getName());
 
         assertThat(server.getConsoleSender().nextMessage()).contains("Done! " + player.getName() + " has been given 1 life.");
         assertThat(PlayerData.getPlayerData(player.getUniqueId().toString()).getLives()).isEqualTo(lvl+1);
@@ -70,7 +70,7 @@ public class LifeSystemCommandsTests extends TestBase {
     @Test
     void test_advanceplayer_no_perms() {
         int lvl = PlayerData.getPlayerData(player.getUniqueId().toString()).getLives();
-        player.performCommand("livesystem advanceplayer " + player.getName());
+        player.performCommand("lifesystem advanceplayer " + player.getName());
         assertThat(player.nextMessage()).contains("I'm sorry, but you do not have permission to perform this command");
     }
 }
