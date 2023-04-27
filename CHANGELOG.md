@@ -1,3 +1,13 @@
+## [1.1.1](https://github.com/TheMatrixNetwork/MatrixLifeSystem/compare/v1.1.0...v1.1.1) (2023-04-27)
+
+
+### Bug Fixes
+
+* rename livesystem to lifesystem ([4c593f7](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/4c593f7a151f995c00d757256dff9d67f4fab794))
+* update gh runner node version ([3b0facd](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/3b0facd5e1120e9c33c239b985dfd7f86fb8f8f3))
+* update gh-action runner ([b7cd8d6](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/b7cd8d6244bd657fc01e536b55e4ae2c05875fe2))
+* update gh-actions ([0bb48f2](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/0bb48f255f2513cbd1d25efe653798766c227794))
+
 # [1.1.0](https://github.com/TheMatrixNetwork/MatrixLifeSystem/compare/v1.0.1...v1.1.0) (2022-12-21)
 
 
