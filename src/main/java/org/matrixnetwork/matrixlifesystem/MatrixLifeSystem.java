@@ -66,7 +66,7 @@ public class MatrixLifeSystem extends JavaPlugin implements Listener {
     }
 
     private void loadConfig() {
-        this.minLifes = this.getConfig().getInt("min-lives");
+        this.minLifes = this.getConfig().getInt("min-lifes");
     }
 
     private void loadLoseLifeMethods() {

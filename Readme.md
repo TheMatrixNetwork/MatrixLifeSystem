@@ -7,7 +7,7 @@ Life System for Matrix network.
 
 ## Gaining Lives
 
-You can gain lives by buying them using `/livesystem`.
+You can gain lives by buying them using `/lifesystem`.
 
 ## Losing Lives
 
