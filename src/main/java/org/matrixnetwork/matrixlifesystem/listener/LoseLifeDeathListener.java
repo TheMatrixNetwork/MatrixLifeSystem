@@ -17,15 +17,21 @@ public class LoseLifeDeathListener implements Listener {
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
-        event.getPlayer().spigot().respawn();
-        if(event.getPlayer().hasPermission(Constants.ACF_ADMIN_PERMISSION)) {
-            return;
-        }
+        plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
+            @Override
+            public void run() {
+                event.getPlayer().spigot().respawn();
 
-        PlayerData.removeLife(PlayerData.getPlayerData(event.getPlayer().getUniqueId().toString()));
+                if(event.getPlayer().hasPermission(Constants.ACF_ADMIN_PERMISSION)) {
+                    return;
+                }
 
-        if(PlayerData.getPlayerData(event.getPlayer().getUniqueId().toString()).getLives() < plugin.getMinLifes()) {
-            MLSUtil.movePlayer(event.getPlayer());
-        }
+                PlayerData.removeLife(PlayerData.getPlayerData(event.getPlayer().getUniqueId().toString()));
+
+                if(PlayerData.getPlayerData(event.getPlayer().getUniqueId().toString()).getLives() < plugin.getMinLifes()) {
+                    MLSUtil.movePlayer(event.getPlayer());
+                }
+            }
+        }, 2L);
     }
 }
