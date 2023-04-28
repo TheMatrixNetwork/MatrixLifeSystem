@@ -21,6 +21,7 @@ import org.matrixnetwork.matrixlifesystem.commands.LifeSystemCommands;
 import org.matrixnetwork.matrixlifesystem.entity.PlayerData;
 import org.matrixnetwork.matrixlifesystem.enums.LoseLifeMethod;
 import org.matrixnetwork.matrixlifesystem.listener.LoseLifeDeathListener;
+import org.matrixnetwork.matrixlifesystem.util.MLSUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,6 +42,8 @@ public class MatrixLifeSystem extends JavaPlugin implements Listener {
     private Economy econ;
     @Getter
     private int minLifes;
+    @Getter
+    private String fallbackServer;
 
     public MatrixLifeSystem() {
         instance = this;
@@ -67,6 +70,7 @@ public class MatrixLifeSystem extends JavaPlugin implements Listener {
 
     private void loadConfig() {
         this.minLifes = this.getConfig().getInt("min-lifes");
+        this.fallbackServer = this.getConfig().getString("fallback-server");
     }
 
     private void loadLoseLifeMethods() {
@@ -95,11 +99,7 @@ public class MatrixLifeSystem extends JavaPlugin implements Listener {
         }
 
         if (pd.getLives() < minLifes) {
-            event.getPlayer()
-                    .kick(Component.text(commandManager
-                            .getLocales()
-                            .getMessage(null, MessageKey.of("kick.message")
-                            )));
+            MLSUtil.movePlayer(event.getPlayer());
         }
 
     }
