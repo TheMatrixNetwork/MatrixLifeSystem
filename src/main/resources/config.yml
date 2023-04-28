@@ -4,5 +4,7 @@ min-lifes: 1
 # Cost for a new life
 advance-cost: 200
 
+fallback-server: "classic"
+
 lose-life-methods:
   - DEATH
