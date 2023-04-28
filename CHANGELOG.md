@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/TheMatrixNetwork/MatrixLifeSystem/compare/v1.1.3...v1.1.4) (2023-04-28)
+
+
+### Bug Fixes
+
+* respawn instead of canceling death event ([04b5e20](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/04b5e20004919ae696578dd068ad822f58d34495))
+
 ## [1.1.3](https://github.com/TheMatrixNetwork/MatrixLifeSystem/compare/v1.1.2...v1.1.3) (2023-04-28)
 
 
