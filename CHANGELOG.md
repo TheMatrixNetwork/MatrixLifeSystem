@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/TheMatrixNetwork/MatrixLifeSystem/compare/v1.1.4...v1.1.5) (2023-04-28)
+
+
+### Bug Fixes
+
+* respawn player a few ticks after he died ([d4d29c0](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/d4d29c05a748e82444bf952af96643d863426fbc))
+
 ## [1.1.4](https://github.com/TheMatrixNetwork/MatrixLifeSystem/compare/v1.1.3...v1.1.4) (2023-04-28)
 
 
