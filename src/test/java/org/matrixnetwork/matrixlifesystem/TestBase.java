@@ -8,8 +8,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.matrixnetwork.matrixlifesystem.database.SessionFactoryMaker;
 import org.matrixnetwork.matrixlifesystem.entity.PlayerData;
+import org.matrixnetwork.matrixlifesystem.util.PluginMessageUtil;
 
 import static org.mockito.Mockito.mock;
 
@@ -18,11 +20,14 @@ public abstract class TestBase {
     protected ServerMock server;
     protected MatrixLifeSystem plugin;
     protected Economy economy;
+    protected PluginMessageUtil pluginMessageUtil;
 
     @BeforeEach
     public void setUp() {
         server = MockBukkit.mock();
         plugin = MockBukkit.load(MatrixLifeSystem.class);
+        pluginMessageUtil = new PluginMessageUtil();
+        server.getMessenger().registerIncomingPluginChannel(plugin, "BungeeCord", pluginMessageUtil);
         mockVaultEconomy();
     }
 
@@ -49,6 +54,7 @@ public abstract class TestBase {
 
     @AfterEach
     public void tearDown() {
+        server.getMessenger().unregisterIncomingPluginChannel(plugin);
         MockBukkit.unmock();
     }
 }

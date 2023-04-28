@@ -12,19 +12,24 @@ public class MLSUtil {
     private static String fallbackServer = MatrixLifeSystem.instance().getFallbackServer();
 
     public static void movePlayer(Player player) {
-        if(!plugin.getServer().getName().equalsIgnoreCase(fallbackServer)) {
-            ByteArrayDataOutput out = ByteStreams.newDataOutput();
-            out.writeUTF("Message");
-            out.writeUTF(Component.text(plugin.getCommandManager()
-                    .getLocales()
-                    .getMessage(null, MessageKey.of("kick.message")
-                    )).toString());
-            player.sendPluginMessage(MatrixLifeSystem.instance(), "BungeeCord", out.toByteArray());
+        plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
+            @Override
+            public void run() {
+                if(!plugin.getServer().getName().equalsIgnoreCase(fallbackServer)) {
+                    ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                    out.writeUTF("Message");
+                    out.writeUTF(Component.text(plugin.getCommandManager()
+                            .getLocales()
+                            .getMessage(null, MessageKey.of("kick.message")
+                            )).toString());
+                    player.sendPluginMessage(MatrixLifeSystem.instance(), "BungeeCord", out.toByteArray());
 
-            out = ByteStreams.newDataOutput();
-            out.writeUTF("Connect");
-            out.writeUTF(MatrixLifeSystem.instance().getFallbackServer());
-            player.sendPluginMessage(MatrixLifeSystem.instance(), "BungeeCord", out.toByteArray());
-        }
+                    out = ByteStreams.newDataOutput();
+                    out.writeUTF("Connect");
+                    out.writeUTF(MatrixLifeSystem.instance().getFallbackServer());
+                    player.sendPluginMessage(MatrixLifeSystem.instance(), "BungeeCord", out.toByteArray());
+                }
+            }
+        }, 10L);
     }
 }

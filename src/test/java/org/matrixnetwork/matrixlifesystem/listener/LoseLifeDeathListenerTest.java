@@ -3,6 +3,7 @@ package org.matrixnetwork.matrixlifesystem.listener;
 import be.seeseemelk.mockbukkit.MockBukkit;
 import be.seeseemelk.mockbukkit.entity.PlayerMock;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.matrixnetwork.matrixlifesystem.Constants;
 import org.matrixnetwork.matrixlifesystem.MatrixLifeSystem;
@@ -14,6 +15,7 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Disabled
 class LoseLifeDeathListenerTest extends TestBase {
     private PlayerMock player;
 

@@ -66,6 +66,13 @@ public class MatrixLifeSystem extends JavaPlugin implements Listener {
         loadLoseLifeMethods();
 
         getServer().getPluginManager().registerEvents(this, this);
+
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+    }
+
+    @Override
+    public void onDisable() {
+        this.getServer().getMessenger().unregisterOutgoingPluginChannel(this);
     }
 
     private void loadConfig() {
