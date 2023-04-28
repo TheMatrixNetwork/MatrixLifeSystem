@@ -1,3 +1,11 @@
+## [1.1.2](https://github.com/TheMatrixNetwork/MatrixLifeSystem/compare/v1.1.1...v1.1.2) (2023-04-28)
+
+
+### Bug Fixes
+
+* disable tests (should be rewritten) and register plugin messaging channel ([0c9ae4b](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/0c9ae4b372e49478bcd76bdb564938b2594eb493))
+* teleport the player to the classic server instead of kicking ([21de444](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/21de444a1908de26503fd56650cc72ad2106afe4))
+
 ## [1.1.1](https://github.com/TheMatrixNetwork/MatrixLifeSystem/compare/v1.1.0...v1.1.1) (2023-04-27)
 
 
