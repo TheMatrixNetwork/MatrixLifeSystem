@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/TheMatrixNetwork/MatrixLifeSystem/compare/v1.1.5...v1.1.6) (2023-04-30)
+
+
+### Bug Fixes
+
+* add titles showing remaining lives ([cdd6d68](https://github.com/TheMatrixNetwork/MatrixLifeSystem/commit/cdd6d68045540adeb008e45741b29c848c291f2b))
+
 ## [1.1.5](https://github.com/TheMatrixNetwork/MatrixLifeSystem/compare/v1.1.4...v1.1.5) (2023-04-28)
 
 
